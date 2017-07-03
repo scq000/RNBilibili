@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-// import { Container } from 'native-base';
 
 export default class Sidebar extends Component {
   render() {

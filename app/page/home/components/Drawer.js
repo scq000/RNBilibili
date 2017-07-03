@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
 import { Drawer } from 'native-base';
 import BiliHeader from './Header';
 import NavBar from './NavBar';
