@@ -5,7 +5,8 @@ import {
   Text,
   StyleSheet,
   Alert,
-  Image, TouchableWithoutFeedback,
+  Image,
+  TouchableWithoutFeedback,
 } from 'react-native';
 
 import { Header, Button, Icon, Right, Left } from 'native-base';
@@ -19,8 +20,6 @@ const styles = StyleSheet.create({
 });
 
 export default class BiliHeader extends Component {
-
-
   constructor(props) {
     super(props);
     this.search = 'paolino';
@@ -30,14 +29,51 @@ export default class BiliHeader extends Component {
     console.log('hello');
   }
 
+  renderMenuItems() {
+    const menus = [
+      {
+        icon: 'https://facebook.github.io/react/img/logo_small.png',
+        pressHandler: () => {
+          Alert.alert('helo');
+        },
+      },
+      {
+        icon: 'https://facebook.github.io/react/img/logo_small.png',
+        pressHandler: () => {
+          console.log('this is b');
+        },
+      },
+      {
+        icon: 'https://facebook.github.io/react/img/logo_small.png',
+        pressHandler: () => {
+          console.log('this is c');
+        },
+      },
+      {
+        icon: 'https://facebook.github.io/react/img/logo_small.png',
+        pressHandler: () => {
+          console.log('this is d');
+        },
+      },
+    ];
+
+    return menus.map((menu, index) =>
+      <TouchableWithoutFeedback key={index} onPress={menu.pressHandler}>
+        <Image source={{ uri: menu.icon }} style={styles.navmenu} />
+      </TouchableWithoutFeedback>
+    );
+  }
+
   render() {
     return (
-      <Header style={{ backgroundColor: '#38adff', height: 50 }}>
+      <Header style={{ height: 50 }} noShadow>
         <Left>
-          <Button transparent onPress={this.toMore} light>
+          <Button transparent onPress={this.props.onPress} light>
             <Icon name="list" />
             <Icon name="ios-person" />
-            <Text style={{ color: 'white' }}>{this.search}</Text>
+            <Text style={{ color: 'white' }}>
+              {this.search}
+            </Text>
           </Button>
         </Left>
         <Right>
@@ -46,34 +82,8 @@ export default class BiliHeader extends Component {
       </Header>
     );
   }
-
-  renderMenuItems() {
-    const menus = [{
-      icon: 'https://facebook.github.io/react/img/logo_small.png',
-      pressHandler: () => {
-        Alert.alert('helo');
-      },
-    }, {
-      icon: 'https://facebook.github.io/react/img/logo_small.png',
-      pressHandler: () => {
-        console.log('this is b');
-      },
-    }, {
-      icon: 'https://facebook.github.io/react/img/logo_small.png',
-      pressHandler: () => {
-        console.log('this is c');
-      },
-    }, {
-      icon: 'https://facebook.github.io/react/img/logo_small.png',
-      pressHandler: () => {
-        console.log('this is d');
-      },
-    }];
-
-    return menus.map((menu, index) =>
-      <TouchableWithoutFeedback key={index} onPress={menu.pressHandler}>
-        <Image source={{ uri: menu.icon }} style={styles.navmenu} />
-      </TouchableWithoutFeedback>
-    );
-  }
 }
+
+BiliHeader.propTypes = {
+  onPress: React.PropTypes.func,
+};

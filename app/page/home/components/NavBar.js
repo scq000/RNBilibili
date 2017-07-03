@@ -1,16 +1,17 @@
 /* @flow weak */
 
-import React from 'react';
+import React, { Component } from 'react';
 import {
     Text,
 } from 'react-native';
 
 import { Tabs, Tab } from 'native-base';
+import LivingScene from "../living";
 
 const NavBar = () => (
   <Tabs initialPage={0}>
     <Tab heading="直播">
-      <Text>直播</Text>
+      <LivingScene />
     </Tab>
     <Tab heading="推荐">
       <Text>推荐</Text>
